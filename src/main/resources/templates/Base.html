@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+ xmlns:th="http://www.thymeleaf.org" 
+ th:fragment="parent(content,title,script)" 
+ class="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:replace="${title}">Document</title>
+  <!-- tailwind css -->
+  <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
+  <!-- flowbit css -->
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+  <!-- fontawsome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+
+<body class="dark:bg-gray-900 bg-gray-100  dark:text-white">
+
+  <!-- common header(navbar) -->
+  <!-- htmlfileName :: fragment name -->
+  <div data-th-replace="Navbar :: navbar"></div>
+
+
+  <!-- main content dynamic -->
+  <div class="p-4">
+    <section data-th-replace="${content}"></section>
+  </div>
+
+  <!-- common footer -->
+  <!-- <footer>Footer: Lorem ipsum dolor sit amet.</footer> -->
+
+  <!-- adding our js file -->
+  <script th:src="@{/js/script.js}">
+
+  </script>
+
+  <!-- flowbit js -->
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+</body>
+
+</html>
