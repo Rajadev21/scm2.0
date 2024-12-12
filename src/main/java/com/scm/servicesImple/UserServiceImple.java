@@ -7,10 +7,12 @@ import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.scm.entities.User;
 import com.scm.exceptions.ResourceNotFoundException;
+import com.scm.helper.AppConstant;
 import com.scm.repositories.UserRepository;
 import com.scm.services.UserService;
 
@@ -20,6 +22,9 @@ public class UserServiceImple implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
@@ -27,6 +32,14 @@ public class UserServiceImple implements UserService {
         // before we save a user we have to generate a id randomly
         String userId = UUID.randomUUID().toString();
         user.setUserId(userId);
+
+        // password encode
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        // setting USER Role
+        user.setRoleList(List.of(AppConstant.ROLE_USER));
+
+        logger.info(user.getProvider().toString());
         return userRepository.save(user);
     }
 

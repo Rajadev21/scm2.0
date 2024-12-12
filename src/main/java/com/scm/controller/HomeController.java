@@ -4,13 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.scm.entities.User;
 import com.scm.helper.Message;
-import com.scm.helper.Message.MessageBuilder;
 import com.scm.helper.MessageType;
 import com.scm.services.UserService;
 import com.scm.userform.Userform;
@@ -23,6 +23,11 @@ public class HomeController {
 
     @Autowired
     private UserService userService;
+
+    @GetMapping("/")
+    public String index() {
+        return "redirect:/home";
+    }
 
     @RequestMapping("/home")
     public String home(Model model) {
@@ -51,6 +56,11 @@ public class HomeController {
 
         return "Login";
     }
+
+    // @PostMapping("/authenticate")
+    // public String processLogin() {
+    // return "redirect:/user/dashboard";
+    // }
 
     @RequestMapping("/signup")
     public String signup(Model model) { // here we are creating a empty object of userform. we have done this because we
