@@ -10,7 +10,7 @@ public class UserController {
 
     // user dashboard
 
-    @RequestMapping(value = "/dashboard", method = RequestMethod.POST)
+    @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
     public String UserDashboard() {
 
         return "/user/dashboard"; // in user folder there is a dashboard view.
