@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -57,10 +58,8 @@ public class HomeController {
         return "Login";
     }
 
-    // @PostMapping("/authenticate")
-    // public String processLogin() {
-    // return "redirect:/user/dashboard";
-    // }
+    
+
 
     @RequestMapping("/signup")
     public String signup(Model model) { // here we are creating a empty object of userform. we have done this because we
