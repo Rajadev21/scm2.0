@@ -26,7 +26,16 @@
 
   <!-- common header(navbar) -->
   <!-- htmlfileName :: fragment name -->
-  <div data-th-replace="~{Navbar :: navbar}"></div>
+  <!-- if user is loggedIn :navbar -->
+  <div th:if="${loggedInuser}">
+    <div data-th-replace="~{user/user_navbar::user-navbar}"></div>
+  </div>
+  
+
+  <!-- if user is not loggedIn :navbar -->
+  <div th:unless="${loggedInuser}">
+    <div data-th-replace="~{navbar :: navbar}"></div>
+  </div>
 
 
   <!-- main content dynamic -->

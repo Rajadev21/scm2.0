@@ -54,18 +54,18 @@ public class SecurityConfig {
             formLogin.loginPage("/login");
             formLogin.loginProcessingUrl("/authenticate");
             // formLogin.failureForwardUrl("/login?error=true");
-            formLogin.successForwardUrl("/user/dashboard");
+            formLogin.successForwardUrl("/user/profile");
             formLogin.usernameParameter("email");
             formLogin.passwordParameter("password");
         });
 
         httpSecurity.csrf(AbstractHttpConfigurer::disable);
-        httpSecurity.logout(logoutForm->{
+        httpSecurity.logout(logoutForm -> {
             logoutForm.logoutUrl("/logout");
             logoutForm.logoutSuccessUrl("/login?logout=true");
         });
 
-        httpSecurity.oauth2Login(oauth->{
+        httpSecurity.oauth2Login(oauth -> {
             oauth.loginPage("/login");
             oauth.successHandler(handler);
         });

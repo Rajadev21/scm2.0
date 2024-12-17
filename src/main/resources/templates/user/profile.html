@@ -1,13 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" 
+th:replace="~{Base :: parent(~{::#content},~{::title},~{::script})}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>user Profile</title>
+    <title>Profile</title>
 </head>
 <body>
-    <h1>This is profile page</h1>
-    <h1 th:text="${loggedInuser.name}"></h1>
-    <h1 th:text="${loggedInuser.email}"></h1>
+    <div id="content">
+
+          <!-- if user is loggedIn :sidebar -->
+  <div data:if="${loggedInuser}">
+    <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+  </div>
+
+        <div class="sm:pl-64 pt-20">
+            <div class="flex justify-center flex-col items-center">
+                <h1 class="text-5xl">This is Profile Page</h1>
+            </div>
+        </div>
+    </div>
+    <script>
+        console.log("Profile page")
+    </script>
+
 </body>
 </html>
